@@ -62,7 +62,20 @@ Q1 of graduate school is higher than Q3 of high school and LT high school, when 
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
+```{r}
+model1 <- aov(WORDSUM~DEGREE,data=GSScsv)
+summary.aov(model1)
+```
+
+We reject the null hypothesis because of the low P value of 0.000236. 
+
+```{r}
+par(mar = c(3, 17, 2, 2))
+plot(TukeyHSD(model1, conf.level = 0.98),las=2)
+```
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+First of all, we have created the boxplot where WORDSUM is the x axis, and DEGREE is the y axis. We have found that some boxes don't cross over while others do. We also said that the boxes are statistically different. Lastly, we reject the null hypothesis because of the low P value. 
